@@ -1124,6 +1124,18 @@ footer {
     .modal-info-grid {
         grid-template-columns: 1fr;
     }
+
+    .tutor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tutor-filters {
+        padding: 1rem;
+    }
+
+    .find-tutor {
+        padding: 40px 0;
+    }
 }
 
 .feature-buttons {
