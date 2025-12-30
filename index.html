@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduDoor - Connect with qualified private tutors for in-home tutoring services across Egypt">
+    <title>EduDoor - Your Gateway to Quality Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpeg" alt="EduDoor Logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#find-tutor">Find a Tutor</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Your Gateway to Quality Education</h1>
+                    <p>Connect with qualified private tutors for personalized in-home tutoring across Egypt</p>
+                    <div class="cta-buttons">
+                        <a href="#find-tutor" class="btn btn-primary">Find a Tutor</a>
+                        <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="find-tutor" class="find-tutor">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Find Your Perfect Tutor</h2>
+                    <p>Browse our verified tutors and book a session today</p>
+                </div>
+
+                <div class="tutor-filters">
+                    <div class="filter-group">
+                        <input type="text" id="searchTutor" placeholder="Search by name or subject...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="gradeFilter">
+                            <option value="">All Grade Levels</option>
+                            <option value="primary">Primary (Grades 1-6)</option>
+                            <option value="preparatory">Preparatory (Grades 7-9)</option>
+                            <option value="secondary">Secondary (Grades 10-12)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="subjectFilter">
+                            <option value="">All Subjects</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="English">English</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="French">French</option>
+                            <option value="History">History</option>
+                            <option value="Geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="locationFilter">
+                            <option value="">All Locations</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Giza">Giza</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="priceFilter">
+                            <option value="">All Prices</option>
+                            <option value="0-100">Under 100 EGP</option>
+                            <option value="100-150">100 - 150 EGP</option>
+                            <option value="150-200">150 - 200 EGP</option>
+                            <option value="200+">200+ EGP</option>
+                        </select>
+                    </div>
+                    <button id="resetFilters" class="btn-reset">Reset Filters</button>
+                </div>
+
+                <div class="feature-buttons">
+                    <button class="feature-btn" onclick="showFavorites()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        Favorites <span id="favoriteCount" class="badge">0</span>
+                    </button>
+                    <button class="feature-btn" id="compareBtn" onclick="showComparison()" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Compare <span id="compareCount" class="badge">0</span>
+                    </button>
+                    <button class="feature-btn" onclick="showPriceCalculator()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                        Price Calculator
+                    </button>
+                </div>
+
+                <div class="results-info">
+                    <p><span id="resultCount">0</span> tutors available</p>
+                    <select id="sortBy">
+                        <option value="rating">Sort by Rating</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="experience">Experience</option>
+                    </select>
+                </div>
+
+                <div id="tutorGrid" class="tutor-grid">
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <h3>No tutors found</h3>
+                    <p>Try adjusting your filters to find more tutors</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="tutorModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+
+        <div id="comparisonModal" class="modal">
+            <div class="modal-content modal-wide">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <h2>Compare Tutors</h2>
+                    <button onclick="clearComparison()" class="btn-clear">Clear All</button>
+                </div>
+                <div id="comparisonBody"></div>
+            </div>
+        </div>
+
+        <div id="calculatorModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="calculator-content">
+                    <h2>Price Calculator</h2>
+                    <p>Calculate the total cost of tutoring sessions over time</p>
+
+                    <form class="calculator-form">
+                        <div class="calc-field">
+                            <label for="calcSessions">Sessions per week:</label>
+                            <input type="number" id="calcSessions" min="1" max="7" placeholder="e.g., 2">
+                        </div>
+                        <div class="calc-field">
+                            <label for="calcPrice">Price per session (EGP):</label>
+                            <input type="number" id="calcPrice" min="50" max="500" placeholder="e.g., 150">
+                        </div>
+                        <div class="calc-field">
+                            <label for="calcWeeks">Number of weeks:</label>
+                            <input type="number" id="calcWeeks" min="1" max="52" placeholder="e.g., 12">
+                        </div>
+                        <button type="button" onclick="calculatePrice()" class="btn btn-primary">Calculate</button>
+                    </form>
+
+                    <div id="calcResult" class="calc-result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About EduDoor</h2>
+                    <p>Transforming Education, One Student at a Time</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>EduDoor is an innovative educational platform designed to connect students with qualified private tutors who provide in-home tutoring services. We enable parents and students to easily book a tutor based on the required subject, specific lesson needs, and educational stage.</p>
+                        <p>Our service addresses the growing demand for personalized education by offering flexible, reliable, and high-quality tutoring tailored to each student's academic requirements.</p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <h3>1,500+</h3>
+                            <p>Verified Tutors</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>10,000+</h3>
+                            <p>Students Helped</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>4.5/5</h3>
+                            <p>Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose EduDoor?</h2>
+                    <p>We provide everything you need for academic success</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Verified Tutors</h3>
+                        <p>All tutors are rigorously vetted and verified for quality assurance</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3>Flexible Scheduling</h3>
+                        <p>Book sessions at your convenience with easy rescheduling options</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Safe & Secure</h3>
+                        <p>Your safety is our priority with verified tutors and secure payments</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3>Progress Tracking</h3>
+                        <p>Monitor your child's academic progress with detailed reports</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Personalized Learning</h3>
+                        <p>Tailored tutoring sessions based on individual student needs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h3>All Subjects Covered</h3>
+                        <p>From primary to secondary education, all subjects available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Get started in three simple steps</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Choose Your Tutor</h3>
+                        <p>Browse through our verified tutors and select based on subject, experience, and reviews</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Book a Session</h3>
+                        <p>Select your preferred time and location for the tutoring session</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Start Learning</h3>
+                        <p>Meet your tutor and begin your personalized learning journey</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="target-audience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Who We Serve</h2>
+                    <p>EduDoor is designed for families who value quality education</p>
+                </div>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <h3>Parents</h3>
+                        <p>Time-poor, safety-conscious parents seeking reliable academic support for their children</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>Students</h3>
+                        <p>Primary, preparatory, and secondary students needing personalized help to improve performance</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>Families</h3>
+                        <p>Families who prefer safe, convenient home-based learning solutions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Students Say</h2>
+                    <p>Real feedback from our users</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote">"The tutor explains well, gives practice tests, and revises previous lessons. I can easily change tutors if needed."</div>
+                        <div class="author">
+                            <p><strong>Mahmoud Essam</strong></p>
+                            <p>6th Grade Student</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote">"I love the easy booking and flexible scheduling. The monthly progress reports really make a difference in my academic performance."</div>
+                        <div class="author">
+                            <p><strong>Hossam Alaa</strong></p>
+                            <p>9th Grade Student</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote">"Good explanation, reasonable price, and regular follow-up. The ratings and reviews help me trust the platform."</div>
+                        <div class="author">
+                            <p><strong>Mohamed Essam</strong></p>
+                            <p>10th Grade Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get Started Today</h2>
+                    <p>Ready to transform your learning experience?</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Contact Us</h3>
+                        <p>We're here to help you find the perfect tutor for your needs.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Cairo & Alexandria, Egypt</span>
+                            </div>
+                            <div class="contact-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span>info@edudoor.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <select required>
+                                <option value="">Select Grade Level</option>
+                                <option value="primary">Primary (Grades 1-6)</option>
+                                <option value="preparatory">Preparatory (Grades 7-9)</option>
+                                <option value="secondary">Secondary (Grades 10-12)</option>
+                            </select>
+                            <textarea placeholder="Tell us about your needs" rows="4" required></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="EduDoor Logo">
+                    <p>Your Gateway to Quality Education</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduDoor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
